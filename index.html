@@ -2,210 +2,194 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="战队火力榜，点进战队帮你加一把火">
 <title>战队火力榜 · 哪个战队最猛</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    background:linear-gradient(180deg,#2f87ea 0%,#3d97f2 50%,#2f87ea 100%);
-    min-height:100vh;padding:0 0 30px;
-  }
-  .wrap{max-width:460px;margin:0 auto;padding:0 13px}
-
-  /* 顶部两条横幅 */
-  .banner{
-    border:1.5px solid rgba(255,255,255,.55);border-radius:10px;
-    padding:11px 10px;text-align:center;margin-bottom:11px;
-    background:rgba(255,255,255,.08);
-  }
-  .banner .l1{color:#ffe14d;font-size:18px;font-weight:800;letter-spacing:.5px}
-  .banner .l2{color:#fff;font-size:14.5px;font-weight:600}
-  .banner .hl{background:#ffe14d;color:#1a5fd0;padding:1px 6px;border-radius:4px;font-weight:800}
-
-  .meta{text-align:center;color:rgba(255,255,255,.85);font-size:13px;margin:14px 0}
-  .meta .dot{margin-right:4px}
-
-  /* 区块标题 */
-  .list-box{
-    background:rgba(255,255,255,.14);border-radius:16px;padding:14px 11px;
-  }
-  .sec-head{text-align:center;margin-bottom:13px}
-  .sec-pill{
-    display:inline-block;background:#fff;color:#1a5fd0;font-size:18px;font-weight:800;
-    padding:8px 24px;border-radius:22px;box-shadow:0 4px 10px rgba(10,50,120,.2);
-  }
-  .sec-tip{
-    display:block;margin:11px auto 0;width:fit-content;
-    background:#ffe14d;color:#7a4a00;font-size:13.5px;font-weight:700;
-    padding:7px 16px;border-radius:6px;
-  }
-
-  /* 券式卡片：一行一条 */
-  .item{
-    background:#fff;border-radius:14px;
-    padding:12px 12px;margin-bottom:11px;
-    display:flex;align-items:center;gap:11px;
-    box-shadow:0 4px 10px rgba(10,50,120,.18);
-  }
-  .item:last-child{margin-bottom:2px}
-  .ico{
-    width:50px;height:50px;border-radius:12px;flex-shrink:0;
-    display:flex;align-items:center;justify-content:center;
-    font-size:26px;line-height:1;
-  }
-  .ico.orange{background:linear-gradient(160deg,#ffb347,#ff8c2e)}
-  .ico.pink{background:linear-gradient(160deg,#f78fb8,#ee5f9a)}
-  .ico.sky{background:linear-gradient(160deg,#7ecbfa,#3da4e8)}
-  .ico.red{background:linear-gradient(160deg,#ff7a6b,#f04438)}
-  .ico.green{background:linear-gradient(160deg,#5fd08a,#2fae62)}
-  .txt{flex:1;min-width:0}
-  .t1{font-size:16px;font-weight:800;color:#1a1a1a;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .t2{font-size:13px;font-weight:700;color:#f04438;margin-top:4px}
-  .btn{
-    flex-shrink:0;
-    background:linear-gradient(180deg,#ffe14d,#ffc400);
-    color:#7a4300;font-size:14.5px;font-weight:800;
-    border:none;border-radius:20px;padding:9px 16px;
-    box-shadow:0 3px 8px rgba(200,140,0,.28);
-    cursor:pointer;font-family:inherit;letter-spacing:.3px;
-    transition:transform .12s ease;
-  }
-  .btn:active{transform:scale(.96)}
-
-  /* 温馨提示 */
-  .tips{
-    background:rgba(255,255,255,.14);border-radius:16px;
-    padding:14px 16px 16px;margin-top:14px;
-  }
-  .tips .tt{text-align:center;color:#ffe14d;font-size:15.5px;font-weight:800;margin-bottom:10px}
-  .tips p{color:rgba(255,255,255,.88);font-size:13px;line-height:1.8}
-
-  .footer{text-align:center;color:rgba(255,255,255,.5);font-size:11.5px;margin-top:18px}
-
-  /* 弹层 */
-  .mask{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:24px;z-index:99}
-  .mask.on{display:flex}
-  .dialog{background:#fff;border-radius:16px;padding:22px 18px 16px;width:100%;max-width:300px;text-align:center}
-  .dialog .dtitle{font-size:16.5px;font-weight:800;color:#1a1a1a}
-  .dialog .dteam{font-size:13.5px;color:#888;margin-top:9px;line-height:1.6;white-space:pre-line}
-  .dialog .dbtn{margin-top:18px;width:100%;padding:10px 0;border:none;border-radius:20px;
-    background:linear-gradient(180deg,#ffe14d,#ffc400);color:#7a4300;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer}
+:root{
+  --blue:#1b7ff2;
+  --red:#ff4141;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{background:#dbe7f4}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#222}
+.page{
+  max-width:480px;margin:0 auto;min-height:100vh;
+  background:linear-gradient(180deg,#41a3ff 0%,#1b7ff2 45%,#1263cf 100%);
+  padding:12px 12px 46px;
+  box-shadow:0 0 44px rgba(0,0,0,.22);
+}
+/* 微信内提示 */
+.wxbar{display:flex;align-items:center;gap:8px;background:#fff7d6;color:#8a5a00;font-size:12.5px;line-height:1.5;padding:8px 12px;border-radius:10px;margin-bottom:12px}
+.wxbar b{flex:1;font-weight:500}
+.wxbar .x{cursor:pointer;font-size:14px;opacity:.6;padding:2px 6px}
+/* 顶部标语横幅 */
+.banner{border-radius:10px;text-align:center;font-weight:800;letter-spacing:.5px;box-shadow:0 3px 10px rgba(0,50,120,.18)}
+.banner-1{background:#1f8bff;border:2px solid rgba(255,255,255,.7);color:#ffe600;font-size:17px;padding:10px 8px}
+.banner-2{margin-top:10px;background:#1f8bff;border:2px solid rgba(255,255,255,.7);color:#fff;font-size:15.5px;padding:9px 8px;font-weight:600}
+.banner-2 mark{background:#ffe600;color:#111;padding:1px 5px;border-radius:4px;font-weight:800}
+.update{color:rgba(255,255,255,.85);font-size:12px;text-align:center;margin:12px 0}
+/* 分组容器 */
+.group{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:10px}
+.group-head{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:12px}
+.g-1{background:#fff;color:#1b7ff2;font-weight:900;font-size:18px;padding:8px 18px;border-radius:10px;letter-spacing:1px;box-shadow:0 3px 8px rgba(0,40,100,.18)}
+.g-2{background:#ffe600;color:#e63030;font-weight:800;font-size:14px;padding:5px 12px;border-radius:8px}
+/* 战队卡片 */
+.item{
+  display:flex;gap:11px;background:#fff;border-radius:14px;padding:13px;margin-bottom:10px;
+  box-shadow:0 4px 14px rgba(0,60,150,.16);text-decoration:none;color:inherit;position:relative;
+  animation:up .45s both;
+}
+.item:last-child{margin-bottom:2px}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+/* 品牌区 */
+.brand{flex:none;width:64px;display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:2px}
+.corner{
+  background:linear-gradient(180deg,#ffe94d,#ffce00);color:#7a5500;font-size:11px;font-weight:900;
+  padding:2px 9px;border-radius:5px 5px 5px 0;letter-spacing:.5px;align-self:flex-start;
+  box-shadow:0 2px 0 rgba(180,120,0,.35);transform:translateX(-3px);
+}
+.brand-logo{
+  width:56px;height:56px;border-radius:14px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1px;color:#fff;
+  box-shadow:0 3px 8px rgba(0,40,100,.18);position:relative;overflow:hidden;
+}
+.brand-logo::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 28% 22%,rgba(255,255,255,.45),transparent 55%);
+}
+.brand-logo .glyph{font-size:22px;line-height:1;position:relative;z-index:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.15))}
+.brand-logo .abbr{font-size:11.5px;font-weight:900;letter-spacing:.3px;line-height:1;position:relative;z-index:1}
+/* 内容区 */
+.body{flex:1;min-width:0;padding-top:2px}
+.title-row{display:flex;align-items:flex-start;gap:6px;flex-wrap:wrap}
+.team-name{font-size:15.5px;font-weight:800;line-height:1.4;color:#111}
+.people{
+  display:inline-flex;align-items:center;gap:2px;background:#fff3b8;color:#a06e00;
+  font-size:11.5px;font-weight:800;padding:1px 7px;border-radius:5px;white-space:nowrap;margin-top:2px;
+}
+.people::before{content:"👤";font-size:10px}
+.draw{font-size:12.5px;color:#999;margin:5px 0 8px}
+/* 数据条 */
+.meter{display:flex;border-radius:7px;overflow:hidden;margin-bottom:9px;width:100%}
+.power{display:flex;align-items:center;gap:4px;background:#fff8dc;padding:5px 9px;font-size:12px;color:#8a6200;white-space:nowrap}
+.power b{font-size:13.5px;font-weight:900;color:#111;margin:0 1px}
+.money{flex:1;display:flex;align-items:center;background:#fff0a8;padding:5px 9px;font-size:12px;color:#8a6200;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.money b{font-weight:900;color:#e04400;font-size:12.5px;margin:0 2px}
+/* 按钮 */
+.go{
+  display:flex;align-items:center;justify-content:center;gap:4px;width:100%;
+  background:linear-gradient(180deg,#ffe94d,#ffce00);color:#222;font-weight:800;font-size:13.5px;
+  padding:8px;border-radius:999px;box-shadow:0 2px 0 rgba(180,120,0,.35);
+}
+.go.empty{background:#ececec;color:#999;box-shadow:0 2px 0 #d0d0d0}
+/* 提示 */
+.tips{background:rgba(255,255,255,.95);border-radius:12px;padding:12px;text-align:center;margin:16px 0;box-shadow:0 4px 14px rgba(0,60,150,.16)}
+.tips-title{color:#ff2d2d;font-weight:900;font-size:16px;letter-spacing:1px;border-bottom:2px solid #ff2d2d;display:inline-block;padding-bottom:2px;margin-bottom:8px}
+.tips-body{font-weight:900;font-size:16.5px;color:#111}
+.tips-body em{color:#ff2d2d;font-style:normal;font-size:20px;padding:0 2px}
+.tips-sub{font-size:11.5px;color:#888;margin-top:6px}
+.disclaimer{color:rgba(255,255,255,.75);font-size:11px;line-height:1.7;text-align:center;margin-top:18px;padding:0 6px}
+/* toast */
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:rgba(0,0,0,.78);color:#fff;font-size:13.5px;padding:9px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:99;max-width:80vw;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%)}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="page">
 
-  <div class="banner" style="margin-top:14px">
-    <div class="l1">哪个战队最猛，一起加把火！</div>
+  <div class="wxbar" id="wxbar">
+    <b>💡 如点击无反应，请点右上角「···」选择「在浏览器打开」</b>
+    <span class="x" onclick="document.getElementById('wxbar').remove()">✕</span>
   </div>
 
-  <div class="banner">
-    <div class="l2">每个战队都点一遍，<span class="hl">火力值叠加才够猛</span></div>
-  </div>
+  <div class="banner banner-1">哪个战队最猛，一起加把火！</div>
+  <div class="banner banner-2">每个战队都点一遍，<mark>火力值叠加才够猛</mark></div>
+  <div class="update">🔥 实时火力榜 · <span id="today"></span></div>
 
-  <div class="meta"><span class="dot">🔥</span>实时火力榜 · 今日已更新 · <span id="today"></span></div>
-
-  <div class="list-box">
-    <div class="sec-head">
-      <div class="sec-pill">以下是品牌战队，火力全开</div>
-      <span class="sec-tip">点按钮帮战队加一把火</span>
+  <div class="group">
+    <div class="group-head">
+      <div class="g-1">以下是品牌战队，火力全开</div>
+      <div class="g-2">点进去帮战队加一把火</div>
     </div>
     <div id="list"></div>
   </div>
 
   <div class="tips">
-    <div class="tt">👑 温馨提示 ·</div>
-    <p>· 火力值实时更新，以页面显示为准<br>
-       · 每个战队都可以点一遍，火力值会叠加<br>
-       · 可瓜分现金按最终火力占比分配<br>
-       · 活动最终解释权归主办方所有</p>
+    <div class="tips-title">💥 温馨提示：</div>
+    <div class="tips-body">3个战队<em>全部</em>点一遍 ↑</div>
+    <div class="tips-sub">火力值与瓜分金额以各品牌官方活动页面为准</div>
   </div>
 
-  <div class="footer">战队火力榜 · daylume.github.io</div>
+  <p class="disclaimer">本页面为活动助力信息分享页，活动规则与奖励以各品牌官方页面为准。<br>助力过程请勿向任何人透露短信验证码等隐私信息。</p>
 </div>
 
-<div class="mask" id="mask">
-  <div class="dialog">
-    <div class="dtitle">加入成功，火力值 +1 🔥</div>
-    <div class="dteam" id="dteam"></div>
-    <button class="dbtn" id="dclose">知道了</button>
-  </div>
-</div>
+<div class="toast" id="toast"></div>
 
 <script>
-/* ==================================================================
-   ★★★ 只改这一段就行 ★★★
-
-   每个战队 5 个字段：
-   ico      —— 图标 emoji，比如 "🔥" "🦷" "⚡"
-   icoClass —— 图标底色：orange / pink / sky / red / green
-   name     —— 战队名称（白色卡片第一行大字）
-   sub      —— 红色小字，奖品、火力值、金额写这里
-   link     —— ★你的邀请链接★ 直接粘贴在引号里，点击按钮就跳转
-
-   ⚠️ 链接一定要用英文双引号包起来，例：
-   link:"https://xxx.com/invite?code=abc"
-   ================================================================== */
+/* ====================================================
+   ✏️ 只需改这里：每个战队粘上你自己的专属助力链接
+   url:"" 留空 = 该战队按钮显示"暂未开启"
+   ==================================================== */
 const TEAMS = [
-  {
-    ico:"🔥", icoClass:"orange",
-    name:"奥佳华x彭于晏燃动战队",
-    sub:"每天可领 · 抽彭于晏亲签照 · 71.5W火力 · 可瓜分50000元现金",
-    link:""     // ← 把奥佳华战队的邀请链接填这里
-  },
-  {
-    ico:"🦷", icoClass:"sky",
-    name:"冷酸灵x黄子弘凡自在队",
-    sub:"每天可领 · 抽黄子弘凡周边 · 63.2W火力 · 可瓜分40000元现金",
-    link:""     // ← 把冷酸灵战队的邀请链接填这里
-  },
-  {
-    ico:"⚡", icoClass:"red",
-    name:"TCL宅家潮玩战队",
-    sub:"每天可领 · 抽TCL电视 · 95.9W火力 · 可瓜分80000元现金",
-    link:""     // ← 把 TCL 战队的邀请链接填这里
-  }
-];
-/* ================================================================== */
+  { tag:"超燃", brand:"TCL",    abbr:"TCL",    glyph:"⚡", color:"linear-gradient(135deg,#ff5b5b,#d61b1b)",
+    name:"TCL宅家潮玩战队",        people:7128, draw:"抽TCL电视",            power:"73.5W", money:"128000元现金", url:"" },
 
-const list = document.getElementById('list');
-TEAMS.forEach((t, i) => {
-  const d = document.createElement('div');
-  d.className = 'item';
-  d.innerHTML = `
-    <div class="ico ${t.icoClass}">${t.ico}</div>
-    <div class="txt">
-      <div class="t1">${t.name}</div>
-      <div class="t2">${t.sub}</div>
-    </div>
-    <button class="btn" data-idx="${i}">🔥立即加火</button>
-  `;
-  list.appendChild(d);
-});
+  { tag:"劲猛", brand:"冷酸灵", abbr:"冷酸灵", glyph:"🦷", color:"linear-gradient(135deg,#5ac8fa,#1b7ff2)",
+    name:"冷酸灵x黄子弘凡自在队",  people:4180, draw:"抽黄子弘凡周边",       power:"42.2W", money:"92000元现金",  url:"" },
+
+  { tag:"雄厚", brand:"奥佳华", abbr:"OGAWA", glyph:"💆", color:"linear-gradient(135deg,#8fd14f,#3a9e2e)",
+    name:"奥佳华x彭于晏燃动战队", people:3319,  draw:"抽彭于晏亲签照",       power:"27W",   money:"53000元现金",  url:"" },
+];
+
+/* ---------- 以下无需修改 ---------- */
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+
+function render(){
+  document.getElementById("list").innerHTML = TEAMS.map((t,i) => {
+    const has = t.url && t.url.trim() && t.url.trim() !== "#";
+    return `
+    <a class="item" href="${has ? esc(t.url.trim()) : "javascript:void(0)"}"
+       ${has ? "" : 'data-empty="1"'} data-name="${esc(t.name)}"
+       style="animation-delay:${i*0.06}s">
+      <div class="brand">
+        <div class="corner">${esc(t.tag)}</div>
+        <div class="brand-logo" style="background:${esc(t.color)}">
+          <span class="glyph">${esc(t.glyph)}</span>
+          <span class="abbr">${esc(t.abbr)}</span>
+        </div>
+      </div>
+      <div class="body">
+        <div class="title-row">
+          <span class="team-name">${esc(t.name)}</span>
+          <span class="people">${t.people.toLocaleString()}</span>
+        </div>
+        <div class="draw">${esc(t.draw)}</div>
+        <div class="meter">
+          <span class="power">🔥 <b>${esc(t.power)}</b> 火力值</span>
+          <span class="money">可瓜分<b>${esc(t.money)}</b></span>
+        </div>
+        <span class="go ${has ? "" : "empty"}">${has ? "🔥 去加入战队一起瓜分" : "暂未开启"}</span>
+      </div>
+    </a>`;
+  }).join("");
+}
+render();
 
 const d = new Date();
-document.getElementById('today').textContent = `${d.getMonth()+1}月${d.getDate()}日`;
+document.getElementById("today").textContent = `${d.getMonth()+1}月${d.getDate()}日`;
 
-const mask = document.getElementById('mask');
-const dteam = document.getElementById('dteam');
-list.addEventListener('click', e => {
-  const btn = e.target.closest('.btn');
-  if (!btn) return;
-  const t = TEAMS[btn.dataset.idx];
-
-  // 填了邀请链接 → 直接跳转
-  if (t.link && t.link.trim() !== '') {
-    window.location.href = t.link.trim();
-    return;
-  }
-
-  // 没填链接 → 弹提示（提醒你还没配置）
-  dteam.textContent = `「${t.name}」\n还没配置邀请链接，请在代码里填 link 字段`;
-  mask.classList.add('on');
+let timer;
+function toast(msg){
+  const el = document.getElementById("toast");
+  el.textContent = msg; el.classList.add("show");
+  clearTimeout(timer); timer = setTimeout(()=>el.classList.remove("show"), 2000);
+}
+document.addEventListener("click", e => {
+  const card = e.target.closest('.item[data-empty="1"]');
+  if (card){ e.preventDefault(); toast("「" + card.dataset.name + "」链接还未配置"); }
 });
-document.getElementById('dclose').onclick = () => mask.classList.remove('on');
-mask.onclick = e => { if (e.target === mask) mask.classList.remove('on'); };
 </script>
 </body>
 </html>
