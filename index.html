@@ -8,96 +8,95 @@
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{
     font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    background:linear-gradient(170deg,#4a9ee8 0%,#6db8f0 45%,#5aa8e8 100%);
-    min-height:100vh;padding:0 0 40px;
+    background:linear-gradient(180deg,#2f87ea 0%,#3d97f2 50%,#2f87ea 100%);
+    min-height:100vh;padding:0 0 30px;
   }
-  .wrap{max-width:460px;margin:0 auto;padding:0 14px}
-  .topbar{display:flex;align-items:center;gap:10px;padding:14px 4px 18px;color:#fff}
-  .topbar .back{font-size:22px;line-height:1;opacity:.9}
-  .topbar .title{flex:1;text-align:center;font-size:17px;font-weight:600;letter-spacing:.5px}
-  .topbar .ph{width:22px}
+  .wrap{max-width:460px;margin:0 auto;padding:0 13px}
+
+  /* 顶部两条横幅 */
   .banner{
-    border:1.5px solid rgba(255,255,255,.42);border-radius:14px;
-    padding:13px 12px;text-align:center;margin-bottom:11px;
-    background:rgba(255,255,255,.13);backdrop-filter:blur(2px);
+    border:1.5px solid rgba(255,255,255,.55);border-radius:10px;
+    padding:11px 10px;text-align:center;margin-bottom:11px;
+    background:rgba(255,255,255,.08);
   }
-  .banner .l1{color:#fff;font-size:19px;font-weight:800;letter-spacing:.5px;text-shadow:0 1px 2px rgba(20,70,130,.18)}
-  .banner .l2{color:#fff;font-size:15px;font-weight:600;margin-top:9px}
-  .banner .hl{background:#fff;color:#2f7fc4;padding:1px 7px;border-radius:4px;font-weight:800}
-  .realtime{text-align:center;color:rgba(255,255,255,.92);font-size:13.5px;margin:16px 0}
-  .sec-head{text-align:center;margin-bottom:16px}
+  .banner .l1{color:#ffe14d;font-size:18px;font-weight:800;letter-spacing:.5px}
+  .banner .l2{color:#fff;font-size:14.5px;font-weight:600}
+  .banner .hl{background:#ffe14d;color:#1a5fd0;padding:1px 6px;border-radius:4px;font-weight:800}
+
+  .meta{text-align:center;color:rgba(255,255,255,.85);font-size:13px;margin:14px 0}
+  .meta .dot{margin-right:4px}
+
+  /* 区块标题 */
+  .list-box{
+    background:rgba(255,255,255,.14);border-radius:16px;padding:14px 11px;
+  }
+  .sec-head{text-align:center;margin-bottom:13px}
   .sec-pill{
-    display:inline-block;background:#fff;color:#2f7fc4;font-size:19px;font-weight:800;
-    letter-spacing:.5px;padding:9px 30px;border-radius:24px;
-    box-shadow:0 6px 16px rgba(30,90,150,.16);
+    display:inline-block;background:#fff;color:#1a5fd0;font-size:18px;font-weight:800;
+    padding:8px 24px;border-radius:22px;box-shadow:0 4px 10px rgba(10,50,120,.2);
   }
   .sec-tip{
-    display:block;margin:13px auto 0;width:fit-content;
-    background:#fff;color:#ef7f3c;font-size:14px;font-weight:700;
-    padding:8px 20px;border-radius:20px;
-    box-shadow:0 4px 12px rgba(30,90,150,.14);
+    display:block;margin:11px auto 0;width:fit-content;
+    background:#ffe14d;color:#7a4a00;font-size:13.5px;font-weight:700;
+    padding:7px 16px;border-radius:6px;
   }
-  .card{
-    background:#fff;border-radius:18px;padding:15px 15px 16px;margin-bottom:15px;
-    box-shadow:0 8px 20px rgba(30,90,150,.16);
+
+  /* 券式卡片：一行一条 */
+  .item{
+    background:#fff;border-radius:14px;
+    padding:12px 12px;margin-bottom:11px;
+    display:flex;align-items:center;gap:11px;
+    box-shadow:0 4px 10px rgba(10,50,120,.18);
   }
-  .badge{display:inline-block;background:#eaf5ff;color:#3183c8;font-size:12px;font-weight:700;
-    letter-spacing:.5px;padding:3px 11px;border-radius:5px;margin-bottom:10px}
-  .row{display:flex;gap:12px;align-items:flex-start}
-  .logo{width:58px;height:58px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;
-    justify-content:center;color:#fff;font-weight:800;font-size:12px;text-align:center;
-    line-height:1.25;padding:4px;margin-top:22px}
-  .logo.green{background:linear-gradient(160deg,#6ecb8a,#3fa86a)}
-  .logo.blue{background:linear-gradient(160deg,#7cc9ee,#3a9bd1)}
-  .logo.red{background:linear-gradient(160deg,#f8836d,#e0553c)}
-  .main{flex:1;min-width:0}
-  .team-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-  .team-name{font-size:16.5px;font-weight:800;color:#1f2a35;letter-spacing:.2px}
-  .cnt{display:inline-flex;align-items:center;gap:3px;background:#eef4f9;color:#3b7fb5;
-    font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px}
-  .cnt .dot{font-size:11px}
-  .sub{color:#93a3b0;font-size:12.5px;margin-top:6px}
-  .stats{display:flex;gap:9px;margin-top:11px}
-  .stat{flex:1;display:flex;align-items:center;gap:6px;border-radius:10px;padding:9px 10px;min-width:0}
-  .stat.fire{background:#fff4ec}
-  .stat.cash{background:#fdf7e6}
-  .stat .ic{font-size:15px;line-height:1}
-  .stat .val{font-size:16px;font-weight:800;white-space:nowrap}
-  .stat.fire .val{color:#ef7f3c}
-  .stat.fire .val small{font-size:11.5px;font-weight:700;margin-left:1px}
-  .stat.cash .pre{font-size:11.5px;color:#a08a4a}
-  .stat.cash .val{color:#d9622c;font-size:15px}
-  .stat.cash .val small{font-size:11px}
-  .join{
-    display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:12px;
-    padding:12px 0;background:linear-gradient(180deg,#ffb877,#f59048);color:#fff;
-    font-size:15.5px;font-weight:800;letter-spacing:.3px;border:none;border-radius:24px;
-    cursor:pointer;box-shadow:0 5px 14px rgba(230,130,60,.32);
-    transition:transform .12s ease,box-shadow .12s ease;font-family:inherit;
+  .item:last-child{margin-bottom:2px}
+  .ico{
+    width:50px;height:50px;border-radius:12px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    font-size:26px;line-height:1;
   }
-  .join:active{transform:translateY(1px);box-shadow:0 2px 6px rgba(230,130,60,.3)}
-  .mask{position:fixed;inset:0;background:rgba(25,45,65,.45);display:none;align-items:center;
-    justify-content:center;padding:24px;z-index:99}
+  .ico.orange{background:linear-gradient(160deg,#ffb347,#ff8c2e)}
+  .ico.pink{background:linear-gradient(160deg,#f78fb8,#ee5f9a)}
+  .ico.sky{background:linear-gradient(160deg,#7ecbfa,#3da4e8)}
+  .ico.red{background:linear-gradient(160deg,#ff7a6b,#f04438)}
+  .ico.green{background:linear-gradient(160deg,#5fd08a,#2fae62)}
+  .txt{flex:1;min-width:0}
+  .t1{font-size:16px;font-weight:800;color:#1a1a1a;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .t2{font-size:13px;font-weight:700;color:#f04438;margin-top:4px}
+  .btn{
+    flex-shrink:0;
+    background:linear-gradient(180deg,#ffe14d,#ffc400);
+    color:#7a4300;font-size:14.5px;font-weight:800;
+    border:none;border-radius:20px;padding:9px 16px;
+    box-shadow:0 3px 8px rgba(200,140,0,.28);
+    cursor:pointer;font-family:inherit;letter-spacing:.3px;
+    transition:transform .12s ease;
+  }
+  .btn:active{transform:scale(.96)}
+
+  /* 温馨提示 */
+  .tips{
+    background:rgba(255,255,255,.14);border-radius:16px;
+    padding:14px 16px 16px;margin-top:14px;
+  }
+  .tips .tt{text-align:center;color:#ffe14d;font-size:15.5px;font-weight:800;margin-bottom:10px}
+  .tips p{color:rgba(255,255,255,.88);font-size:13px;line-height:1.8}
+
+  .footer{text-align:center;color:rgba(255,255,255,.5);font-size:11.5px;margin-top:18px}
+
+  /* 弹层 */
+  .mask{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:24px;z-index:99}
   .mask.on{display:flex}
-  .dialog{background:#fff;border-radius:18px;padding:24px 20px 18px;width:100%;max-width:320px;text-align:center}
-  .dialog .dtitle{font-size:17px;font-weight:800;color:#1f2a35}
-  .dialog .dteam{font-size:14px;color:#7b8b98;margin-top:10px;line-height:1.6}
-  .dialog .dbtn{margin-top:20px;width:100%;padding:11px 0;border:none;border-radius:22px;
-    background:linear-gradient(180deg,#ffb877,#f59048);color:#fff;font-size:15px;font-weight:800;
-    font-family:inherit;cursor:pointer}
-  .footer{text-align:center;color:rgba(255,255,255,.72);font-size:11.5px;margin-top:22px;line-height:1.7}
+  .dialog{background:#fff;border-radius:16px;padding:22px 18px 16px;width:100%;max-width:300px;text-align:center}
+  .dialog .dtitle{font-size:16.5px;font-weight:800;color:#1a1a1a}
+  .dialog .dteam{font-size:13.5px;color:#888;margin-top:9px;line-height:1.6;white-space:pre-line}
+  .dialog .dbtn{margin-top:18px;width:100%;padding:10px 0;border:none;border-radius:20px;
+    background:linear-gradient(180deg,#ffe14d,#ffc400);color:#7a4300;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <div class="topbar">
-    <span class="back">&#8249;</span>
-    <span class="title">战队火力榜 · 哪个战队最猛</span>
-    <span class="ph"></span>
-  </div>
-
-  <div class="banner">
+  <div class="banner" style="margin-top:14px">
     <div class="l1">哪个战队最猛，一起加把火！</div>
   </div>
 
@@ -105,108 +104,69 @@
     <div class="l2">每个战队都点一遍，<span class="hl">火力值叠加才够猛</span></div>
   </div>
 
-  <div class="realtime">&#128293; 实时火力榜 · <span id="today">10月18日</span></div>
+  <div class="meta"><span class="dot">🔥</span>实时火力榜 · 今日已更新 · <span id="today"></span></div>
 
-  <div class="sec-head">
-    <div class="sec-pill">以下是品牌战队，火力全开</div>
-    <span class="sec-tip">点进去帮战队加一把火</span>
+  <div class="list-box">
+    <div class="sec-head">
+      <div class="sec-pill">以下是品牌战队，火力全开</div>
+      <span class="sec-tip">点按钮帮战队加一把火</span>
+    </div>
+    <div id="list"></div>
   </div>
 
-  <div id="list"></div>
+  <div class="tips">
+    <div class="tt">👑 温馨提示 ·</div>
+    <p>· 火力值实时更新，以页面显示为准<br>
+       · 每个战队都可以点一遍，火力值会叠加<br>
+       · 可瓜分现金按最终火力占比分配<br>
+       · 活动最终解释权归主办方所有</p>
+  </div>
 
-  <div class="footer">火力值实时更新，以页面显示为准</div>
+  <div class="footer">战队火力榜 · daylume.github.io</div>
 </div>
 
 <div class="mask" id="mask">
   <div class="dialog">
-    <div class="dtitle">加入成功，火力值 +1</div>
+    <div class="dtitle">加入成功，火力值 +1 🔥</div>
     <div class="dteam" id="dteam"></div>
     <button class="dbtn" id="dclose">知道了</button>
   </div>
 </div>
 
 <script>
-/* ========= 只改这里的数据就行 ========= */
+/* ========= 改这里的数据即可 =========
+   ico 是 emoji 图标；icoClass 决定图标底色：orange / pink / sky / red / green */
 const TEAMS = [
-  {
-    badge: "爆表",
-    name: "奥佳华x彭于晏燃动战队",
-    count: "7,251",
-    sub: "抽彭于晏亲签照",
-    logo: "OGAWA",
-    logoClass: "green",
-    fire: "71.5",
-    cash: "50000"
-  },
-  {
-    badge: "强劲",
-    name: "冷酸灵x黄子弘凡自在队",
-    count: "6,352",
-    sub: "抽黄子弘凡周边",
-    logo: "冷酸灵",
-    logoClass: "blue",
-    fire: "63.2",
-    cash: "40000"
-  },
-  {
-    badge: "超燃",
-    name: "TCL宅家潮玩战队",
-    count: "10,566",
-    sub: "抽TCL电视",
-    logo: "TCL",
-    logoClass: "red",
-    fire: "95.9",
-    cash: "80000"
-  }
+  { ico:"🔥", icoClass:"orange", name:"奥佳华x彭于晏燃动战队", sub:"每天可领 · 抽彭于晏亲签照 · 71.5W火力 · 可瓜分50000元现金" },
+  { ico:"🦷", icoClass:"sky",    name:"冷酸灵x黄子弘凡自在队", sub:"每天可领 · 抽黄子弘凡周边 · 63.2W火力 · 可瓜分40000元现金" },
+  { ico:"⚡", icoClass:"red",    name:"TCL宅家潮玩战队",       sub:"每天可领 · 抽TCL电视 · 95.9W火力 · 可瓜分80000元现金" }
 ];
-/* ==================================== */
+/* ================================== */
 
 const list = document.getElementById('list');
-
 TEAMS.forEach(t => {
-  const card = document.createElement('div');
-  card.className = 'card';
-  card.innerHTML = `
-    <div class="badge">${t.badge}</div>
-    <div class="row">
-      <div class="logo ${t.logoClass}">${t.logo}</div>
-      <div class="main">
-        <div class="team-row">
-          <span class="team-name">${t.name}</span>
-          <span class="cnt"><span class="dot">&#128100;</span>${t.count}</span>
-        </div>
-        <div class="sub">${t.sub}</div>
-        <div class="stats">
-          <div class="stat fire">
-            <span class="ic">&#128293;</span>
-            <span class="val">${t.fire}W<small>火力值</small></span>
-          </div>
-          <div class="stat cash">
-            <span class="pre">可瓜分</span>
-            <span class="val">${t.cash}元<small>现金</small></span>
-          </div>
-        </div>
-        <button class="join" data-name="${t.name}">
-          <span>&#128293;</span>去加入战队一起瓜分
-        </button>
-      </div>
+  const d = document.createElement('div');
+  d.className = 'item';
+  d.innerHTML = `
+    <div class="ico ${t.icoClass}">${t.ico}</div>
+    <div class="txt">
+      <div class="t1">${t.name}</div>
+      <div class="t2">${t.sub}</div>
     </div>
+    <button class="btn" data-name="${t.name}">🔥立即加火</button>
   `;
-  list.appendChild(card);
+  list.appendChild(d);
 });
 
-/* 日期自动显示今天 */
 const d = new Date();
 document.getElementById('today').textContent = `${d.getMonth()+1}月${d.getDate()}日`;
 
-/* 点击反馈 */
 const mask = document.getElementById('mask');
 const dteam = document.getElementById('dteam');
 list.addEventListener('click', e => {
-  const btn = e.target.closest('.join');
+  const btn = e.target.closest('.btn');
   if (!btn) return;
-  dteam.textContent = `你已加入「${btn.dataset.name}」\n快去拉朋友一起加火吧`;
-  dteam.style.whiteSpace = 'pre-line';
+  dteam.textContent = `你已为「${btn.dataset.name}」加火\n快去拉朋友一起加把火吧`;
   mask.classList.add('on');
 });
 document.getElementById('dclose').onclick = () => mask.classList.remove('on');
