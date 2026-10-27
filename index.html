@@ -134,17 +134,43 @@
 </div>
 
 <script>
-/* ========= 改这里的数据即可 =========
-   ico 是 emoji 图标；icoClass 决定图标底色：orange / pink / sky / red / green */
+/* ==================================================================
+   ★★★ 只改这一段就行 ★★★
+
+   每个战队 5 个字段：
+   ico      —— 图标 emoji，比如 "🔥" "🦷" "⚡"
+   icoClass —— 图标底色：orange / pink / sky / red / green
+   name     —— 战队名称（白色卡片第一行大字）
+   sub      —— 红色小字，奖品、火力值、金额写这里
+   link     —— ★你的邀请链接★ 直接粘贴在引号里，点击按钮就跳转
+
+   ⚠️ 链接一定要用英文双引号包起来，例：
+   link:"https://xxx.com/invite?code=abc"
+   ================================================================== */
 const TEAMS = [
-  { ico:"🔥", icoClass:"orange", name:"奥佳华x彭于晏燃动战队", sub:"每天可领 · 抽彭于晏亲签照 · 71.5W火力 · 可瓜分50000元现金" },
-  { ico:"🦷", icoClass:"sky",    name:"冷酸灵x黄子弘凡自在队", sub:"每天可领 · 抽黄子弘凡周边 · 63.2W火力 · 可瓜分40000元现金" },
-  { ico:"⚡", icoClass:"red",    name:"TCL宅家潮玩战队",       sub:"每天可领 · 抽TCL电视 · 95.9W火力 · 可瓜分80000元现金" }
+  {
+    ico:"🔥", icoClass:"orange",
+    name:"奥佳华x彭于晏燃动战队",
+    sub:"每天可领 · 抽彭于晏亲签照 · 71.5W火力 · 可瓜分50000元现金",
+    link:""     // ← 把奥佳华战队的邀请链接填这里
+  },
+  {
+    ico:"🦷", icoClass:"sky",
+    name:"冷酸灵x黄子弘凡自在队",
+    sub:"每天可领 · 抽黄子弘凡周边 · 63.2W火力 · 可瓜分40000元现金",
+    link:""     // ← 把冷酸灵战队的邀请链接填这里
+  },
+  {
+    ico:"⚡", icoClass:"red",
+    name:"TCL宅家潮玩战队",
+    sub:"每天可领 · 抽TCL电视 · 95.9W火力 · 可瓜分80000元现金",
+    link:""     // ← 把 TCL 战队的邀请链接填这里
+  }
 ];
-/* ================================== */
+/* ================================================================== */
 
 const list = document.getElementById('list');
-TEAMS.forEach(t => {
+TEAMS.forEach((t, i) => {
   const d = document.createElement('div');
   d.className = 'item';
   d.innerHTML = `
@@ -153,7 +179,7 @@ TEAMS.forEach(t => {
       <div class="t1">${t.name}</div>
       <div class="t2">${t.sub}</div>
     </div>
-    <button class="btn" data-name="${t.name}">🔥立即加火</button>
+    <button class="btn" data-idx="${i}">🔥立即加火</button>
   `;
   list.appendChild(d);
 });
@@ -166,7 +192,16 @@ const dteam = document.getElementById('dteam');
 list.addEventListener('click', e => {
   const btn = e.target.closest('.btn');
   if (!btn) return;
-  dteam.textContent = `你已为「${btn.dataset.name}」加火\n快去拉朋友一起加把火吧`;
+  const t = TEAMS[btn.dataset.idx];
+
+  // 填了邀请链接 → 直接跳转
+  if (t.link && t.link.trim() !== '') {
+    window.location.href = t.link.trim();
+    return;
+  }
+
+  // 没填链接 → 弹提示（提醒你还没配置）
+  dteam.textContent = `「${t.name}」\n还没配置邀请链接，请在代码里填 link 字段`;
   mask.classList.add('on');
 });
 document.getElementById('dclose').onclick = () => mask.classList.remove('on');
